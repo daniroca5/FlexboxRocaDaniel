@@ -1,0 +1,212 @@
+/* CV de Daniel Roca Martínez — CSS propio de cv/index.html (no lo carga ninguna otra página).
+   22-10-2026: base = css/css.css de FlexboxRocaDaniel.zip, puesto al día con el aspecto de
+   CVRocaDaniel.pdf (la última versión): cabecera y pie claros, QR y foto arriba, proyectos sin imagen.
+   El PDF de la web sale de esta misma página (scripts/cv_pdf.py), con las reglas de @media print. */
+
+/* Definición de variables CSS para los colores */
+:root {
+    --berry-dark: #2D1B22;
+    --wisteria-purple: #B795E4;
+    --plum-web: #EFBBF0;
+    --photo-blue-clean: #F4FBFF;
+    --accent-red: #8C1C32;
+    --bg-light: #FDFBFC;
+    --rosa-claro: #F1E4EA;       /* cabecera y pie (como en el PDF) */
+    --white: #FFFFFF;
+    --sombra-fuerte: 0 12px 28px rgba(45, 27, 34, 0.18);
+    --transition: all 0.3s ease;
+}
+
+/* modelo de cajas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* La hoja: fondo claro con esquinas redondeadas sobre blanco, como en el PDF */
+html { background: var(--white); }
+body {
+    background-color: var(--bg-light);
+    color: var(--berry-dark);
+    font-family: Arial, "Liberation Sans", Helvetica, sans-serif;   /* la letra del PDF */
+    line-height: 1.6;
+    max-width: 1100px;
+    margin: 30px auto;
+    border-radius: 14px;
+    /* 22-10-2026: sin overflow:hidden aquí: en el body pasa a la ventana y bloquea el scroll
+       (móvil y escritorio). Las esquinas las redondean la cabecera y el pie. */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* Contenedor principal alineado con Flexbox en sus hijos */
+.contenedor {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Cabecera clara con línea rosa abajo */
+.cabecera-oscura {
+    background-color: var(--rosa-claro);
+    border-bottom: 4px solid var(--plum-web);
+    border-radius: 14px 14px 0 0;
+    padding: 60px 0;
+    color: var(--berry-dark);
+}
+
+/* Flexbox del encabezado */
+.encabezado-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Títulos y textos destacados del header */
+.bloque-info { flex: 1; min-width: 280px; }
+.bloque-info h1 { font-size: 40px; color: var(--accent-red); margin-bottom: 12px; line-height: 1.25; }
+.subtitulo { color: var(--berry-dark); font-size: 18px; font-weight: 400; margin-bottom: 25px; max-width: 650px; }
+
+/* Contenedor de etiquetas técnicas con Flex wrap */
+.etiquetas-cabecera { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+
+/* Etiquetas con efecto hover */
+.etiqueta {
+    background: var(--white);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid var(--wisteria-purple);
+    color: var(--berry-dark);
+    transition: var(--transition); /* efecto hover */
+}
+.etiqueta:hover { background: var(--wisteria-purple); color: var(--berry-dark); }
+
+/* Botones con transiciones y sombras */
+.botones-sociales { display: flex; gap: 15px; flex-wrap: wrap; }
+.boton-destacado {
+    background: var(--accent-red); color: white; padding: 12px 26px;
+    text-decoration: none; border-radius: 8px; font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: var(--transition); /* transiciones y sombras */
+}
+.boton-destacado:hover { transform: translateY(-3px); filter: brightness(1.2); } /* hover */
+
+.boton-borde {
+    border: 2px solid var(--berry-dark); color: var(--berry-dark);
+    padding: 10px 26px; text-decoration: none; border-radius: 8px;
+    font-weight: 700; transition: var(--transition);
+}
+.boton-borde:hover { background: var(--berry-dark); color: var(--photo-blue-clean); }
+
+/* Foto y QR a la derecha de la cabecera */
+.cabecera-derecha { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+
+/* Imagen de perfil circular */
+.foto-perfil img {
+    display: block;
+    width: 180px; height: 180px; border-radius: 50%;
+    border: 5px solid var(--plum-web); object-fit: cover;
+    box-shadow: var(--sombra-fuerte);
+}
+
+/* QR a la web de apuntes */
+.qr-web {
+    display: block;
+    background: var(--white);
+    border: 3px solid var(--plum-web);
+    border-radius: 12px;
+    padding: 9px;
+    transition: var(--transition);
+}
+.qr-web img { display: block; width: 108px; height: 108px; image-rendering: pixelated; }
+.qr-web:hover { border-color: var(--wisteria-purple); transform: scale(1.04); }
+
+/* Secciones de contenido */
+.seccion-bloque { padding: 45px 0; }
+h2 { color: var(--accent-red); font-size: 24px; margin-bottom: 25px; border-bottom: 3px solid var(--plum-web); display: inline-block; }
+
+/* Clases Flexbox reutilizables para el grid adaptativo */
+.fila-flexible-3, .fila-flexible-2 { display: flex; gap: 25px; flex-wrap: wrap; }
+.fila-flexible-3 > * { flex: 1; min-width: 280px; }
+.fila-flexible-2 > * { flex: 1; min-width: 320px; }
+
+/* Estilo de tarjetas con efecto hover focus */
+.tarjeta-blanca {
+    background: var(--white); padding: 25px; border-radius: 12px;
+    box-shadow: var(--sombra-fuerte); border: 1px solid rgba(239, 187, 240, 0.4);
+    transition: var(--transition);
+}
+.tarjeta-blanca:hover { transform: scale(1.02); border-color: var(--accent-red); }
+
+/* Estilo específico para Cards de Proyectos */
+.tarjeta-proyecto {
+    background: var(--white); border-radius: 12px; overflow: hidden;
+    box-shadow: var(--sombra-fuerte); transition: var(--transition);
+    border: 1px solid rgba(239, 187, 240, 0.4);
+}
+.tarjeta-proyecto:hover { transform: translateY(-10px); }
+.contenido-proyecto { padding: 20px 25px; }
+.enlace-proyecto { display: inline-block; margin-top: 15px; color: var(--accent-red); text-decoration: none; font-weight: 700; }
+.enlace-proyecto:hover { text-decoration: underline; }
+
+/* Barras de progreso técnicas */
+.item-progreso { margin-bottom: 40px; }
+.item-progreso span { font-weight: 700; font-size: 15px; display: block; margin-bottom: 12px; }
+/* 22-10-2026: colores ya mezclados al 30 % sobre el fondo (antes opacity: 0.3), igual de
+   aspecto y sin transparencias, que algunos visores de PDF pintan mal */
+.barra-fondo { background: #F9E8F8; height: 14px; border-radius: 20px; }
+.barra-color { background: linear-gradient(to right, #E8DCF5, #DBB8BF); height: 14px; border-radius: 20px; margin-top: -14px; }
+.lista-puntos { padding-left: 18px; }
+
+/* Tags y Footer */
+.tag-habilidad {
+    background: var(--berry-dark); color: var(--photo-blue-clean);
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    margin: 0 8px 8px 0; display: inline-block; border: 1px solid var(--wisteria-purple);
+    transition: var(--transition);
+}
+.tag-habilidad:hover { background: var(--accent-red); }
+
+.pie-oscuro { background: var(--rosa-claro); color: var(--berry-dark); border-top: 4px solid var(--plum-web); border-radius: 0 0 14px 14px; padding: 40px 0; margin-top: 40px; }
+.pie-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.pie-nav a { color: var(--accent-red); text-decoration: none; margin-left: 20px; font-weight: 700; transition: var(--transition); }
+.pie-nav a:hover { color: var(--wisteria-purple); }
+
+/* Direcciones visibles solo en el PDF / impreso (en pantalla mandan los botones) */
+.solo-impreso { display: none; }
+.enlaces-impresos a { color: var(--accent-red); text-decoration: none; font-weight: 700; font-size: 14px; }
+
+/* Móvil: la hoja ocupa todo el ancho y las tarjetas no se salen */
+@media (max-width: 700px) {
+    body, .cabecera-oscura, .pie-oscuro { border-radius: 0; }
+    body { margin: 0; }
+    .contenedor { padding: 0 16px; }
+    .cabecera-oscura { padding: 40px 0; }
+    .bloque-info h1 { font-size: 32px; }
+    .fila-flexible-3 > *, .fila-flexible-2 > * { min-width: 100%; }
+    .pie-nav a { margin: 0 20px 0 0; }
+}
+
+/* Impresión y PDF (scripts/cv_pdf.py): A4 a escala 0,74, como CVRocaDaniel.pdf */
+@media print {
+    body { margin: 0; max-width: none; }
+    .seccion-bloque { padding: 22px 0; }
+    .seccion-bloque:first-child { padding-top: 30px; }
+    h2 { margin-bottom: 18px; }
+    .solo-pantalla, .botones-sociales { display: none; }
+    .solo-impreso { display: inline; }
+    .enlaces-impresos { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+    .tarjeta-blanca, .tarjeta-proyecto, .item-progreso, .grupo-etiquetas { break-inside: avoid; }
+    h2 { break-after: avoid; }
+    /* 22-10-2026: sin sombras en el PDF: Chromium las guarda como bloques
+       semitransparentes y muchos visores (el del móvil) los pintan como rectángulos grises */
+    * { box-shadow: none !important; text-shadow: none !important; }
+    .tarjeta-blanca, .tarjeta-proyecto { border: 1px solid var(--plum-web); }
+    /* columnas fijas: 3 y 2 (con min-width la escala que llena las paginas partia las filas) */
+    .fila-flexible-3 > * { min-width: 0; flex: 1 1 0; }
+    .fila-flexible-2 > * { min-width: 0; flex: 0 0 calc((100% - 25px) / 2); }
+    .tarjeta-blanca:hover, .tarjeta-proyecto:hover, .qr-web:hover { transform: none; }
+}
