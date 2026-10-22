@@ -11,4 +11,4 @@ Práctica de Lenguajes de Marcas (1.º de ASIR): un portfolio con HTML semántic
 <p align="center"><img src="img-readme/practica-original.jpg" width="55%" alt="Práctica original"></p>
 
 ---
-Daniel Roca Martínez · [LinkedIn](https://www.linkedin.com/in/daniel-r-m-02b369164/)
+Daniel Roca Martínez · [LinkedIn](https://www.linkedin.com/in/daniel-roca-mar/)
