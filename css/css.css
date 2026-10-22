@@ -1,0 +1,141 @@
+/* Definición de variables CSS para los colores */
+:root {
+    --berry-dark: #2D1B22;       
+    --wisteria-purple: #B795E4;  
+    --plum-web: #EFBBF0;         
+    --photo-blue-clean: #F4FBFF; 
+    --accent-red: #8C1C32;       
+    --bg-light: #FDFBFC;         
+    --white: #FFFFFF;
+    --sombra-fuerte: 0 12px 28px rgba(45, 27, 34, 0.18);
+    --transition: all 0.3s ease;
+}
+
+/* modelo de cajas */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+/* Estilos de fuente y fondo base */
+body {
+    background-color: var(--bg-light);
+    color: var(--berry-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Contenedor principal alineado con Flexbox en sus hijos */
+.contenedor { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 0 25px; 
+}
+
+/* Estilo del header con fondo oscuro */
+.cabecera-oscura {
+    background-color: var(--berry-dark);
+    padding: 60px 0;
+    color: white;
+}
+
+/* Flexbox del encabezado */
+.encabezado-flex { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 40px; 
+    flex-wrap: wrap; 
+}
+
+/* Títulos y textos destacados del header */
+.bloque-info h1 { font-size: 40px; color: var(--plum-web); margin-bottom: 12px; }
+.subtitulo { color: var(--photo-blue-clean); font-size: 18px; font-weight: 500; margin-bottom: 25px; max-width: 650px; }
+
+/* Contenedor de etiquetas técnicas con Flex wrap */
+.etiquetas-cabecera { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+
+/* Etiquetas con efecto hover */
+.etiqueta { 
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 5px 12px; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    border: 1px solid var(--wisteria-purple); 
+    color: var(--photo-blue-clean);
+    transition: var(--transition); /* efecto hover */
+}
+.etiqueta:hover { background: var(--wisteria-purple); color: var(--berry-dark); }
+
+/* Botones con transiciones y sombras */
+.botones-sociales { display: flex; gap: 15px; flex-wrap: wrap; }
+.boton-destacado { 
+    background: var(--accent-red); color: white; padding: 12px 26px; 
+    text-decoration: none; border-radius: 8px; font-weight: 700; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: var(--transition); /* transiciones y sombras */
+}
+.boton-destacado:hover { transform: translateY(-3px); filter: brightness(1.2); } /* hover */
+
+.boton-borde { 
+    border: 2px solid var(--photo-blue-clean); color: var(--photo-blue-clean); 
+    padding: 10px 26px; text-decoration: none; border-radius: 8px; 
+    font-weight: 700; transition: var(--transition);
+}
+.boton-borde:hover { background: var(--photo-blue-clean); color: var(--berry-dark); }
+
+/* Imagen de perfil circular */
+.foto-perfil img { 
+    width: 180px; height: 180px; border-radius: 50%; 
+    border: 5px solid var(--plum-web); object-fit: cover; 
+    box-shadow: var(--sombra-fuerte); 
+}
+
+/* Secciones de contenido */
+.seccion-bloque { padding: 45px 0; }
+h2 { color: var(--accent-red); font-size: 24px; margin-bottom: 25px; border-bottom: 3px solid var(--plum-web); display: inline-block; }
+
+/* Clases Flexbox reutilizables para el grid adaptativo */
+.fila-flexible-3, .fila-flexible-2 { display: flex; gap: 25px; flex-wrap: wrap; }
+.fila-flexible-3 > * { flex: 1; min-width: 280px; }
+.fila-flexible-2 > * { flex: 1; min-width: 320px; }
+
+/* Estilo de tarjetas con efecto hover focus */
+.tarjeta-blanca {
+    background: var(--white); padding: 25px; border-radius: 12px;
+    box-shadow: var(--sombra-fuerte); border: 1px solid rgba(239, 187, 240, 0.4);
+    transition: var(--transition);
+}
+.tarjeta-blanca:hover { transform: scale(1.02); border-color: var(--accent-red); }
+
+/* Estilo específico para Cards de Proyectos */
+.tarjeta-proyecto {
+    background: var(--white); border-radius: 12px; overflow: hidden;
+    box-shadow: var(--sombra-fuerte); transition: var(--transition);
+    border: 1px solid rgba(239, 187, 240, 0.4);
+}
+.tarjeta-proyecto:hover { transform: translateY(-10px); }
+.tarjeta-proyecto img { width: 100%; height: 160px; object-fit: cover; }
+.contenido-proyecto { padding: 20px; }
+.enlace-proyecto { display: inline-block; margin-top: 15px; color: var(--accent-red); text-decoration: none; font-weight: 700; }
+.enlace-proyecto:hover { text-decoration: underline; }
+
+/* Barras de progreso técnicas */
+.item-progreso { margin-bottom: 40px; }
+.item-progreso span { font-weight: 700; font-size: 15px; display: block; margin-bottom: 12px; }
+.barra-fondo { background: var(--plum-web); height: 14px; border-radius: 20px; opacity: 0.3; }
+.barra-color { background: linear-gradient(to right, var(--wisteria-purple), var(--accent-red)); height: 14px; border-radius: 20px; margin-top: -14px; }
+
+/* Tags y Footer */
+.tag-habilidad { 
+    background: var(--berry-dark); color: var(--photo-blue-clean); 
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    margin: 0 8px 8px 0; display: inline-block; border: 1px solid var(--wisteria-purple); 
+    transition: var(--transition);
+}
+.tag-habilidad:hover { background: var(--accent-red); }
+
+.pie-oscuro { background: var(--berry-dark); color: var(--plum-web); padding: 40px 0; margin-top: 40px; }
+.pie-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.pie-nav a { color: var(--photo-blue-clean); text-decoration: none; margin-left: 20px; font-weight: 700; transition: var(--transition); }
+.pie-nav a:hover { color: var(--plum-web); }
